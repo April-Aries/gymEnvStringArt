@@ -4,4 +4,5 @@ register(
     id='StringArt-v0',
     entry_point='StringArt.envs:StringArtEnv',
     max_episode_steps=4000,
+    dataset=''
 )
