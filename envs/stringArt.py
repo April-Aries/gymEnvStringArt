@@ -11,8 +11,8 @@ NUM_PINS = 288
 NUM_LINES = 1000
 BATCH_SIZE = 32
 DATASET_DIR = "./human_faces"
-IMAGE_SAVE_DIR = "./images"
-LOG_DIR = "./logs"
+IMAGE_SAVE_DIR = "/content/images"
+LOG_DIR = "/content/logs"
 
 # String Art Utilities
 
