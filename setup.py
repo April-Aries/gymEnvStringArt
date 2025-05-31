@@ -3,5 +3,11 @@ from setuptools import setup
 setup(
     name="gymEnvStringArt",
     version="0.0.1",
-    install_requires=["gym==0.26.0"],
+    install_requires=[
+        "gym>=0.26.0",
+        "torch",
+        "numpy",
+        "matplotlib",
+        "opencv-python",
+    ],
 )
