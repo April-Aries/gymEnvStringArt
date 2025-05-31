@@ -64,7 +64,9 @@ class StringArtEnv(gym.Env):
         self.last_similarity = 0
         self.target = self.dataset[self.index % len(self.dataset)]
         self.index += 1
-        return self.canvas.copy()
+        obs = self.canvas.copy()
+        info = {}
+        return obs, info
 
     def step(self, action):
         pt1 = self.nail_positions[action // NUM_PINS]
