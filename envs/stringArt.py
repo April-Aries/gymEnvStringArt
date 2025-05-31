@@ -3,6 +3,8 @@ from gym import spaces
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
+import torch.nn.functional as F
+import os
 
 CANVAS_SIZE = 500
 NUM_PINS = 288
@@ -78,6 +80,9 @@ class StringArtEnv(gym.Env):
 
         terminated = self.used_lines >= NUM_LINES
         truncated = False
+        info = {}
+
+        return obs, reward.item(), terminated, truncated, info
 
     def render(self):
         plt.imshow(self.canvas, cmap='gray')
