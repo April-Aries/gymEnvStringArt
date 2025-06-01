@@ -51,7 +51,7 @@ class StringArtEnv(gym.Env):
         self.nail_positions = generate_nail_positions(NUM_PINS, self.radius, self.center)
 
         self.action_space = gym.spaces.Discrete(NUM_PINS * NUM_PINS)
-        self.observation_space = gym.spaces.Box(low=0, high=255, shape=(CANVAS_SIZE, CANVAS_SIZE), dtype=np.uint8)
+        self.observation_space = gym.spaces.Box(low=0.0, high=1.0, shape=(CANVAS_SIZE, CANVAS_SIZE), dtype=np.float32)
         self.reward_range = (-float('inf'), 0)
 
         if not os.path.exists(IMAGE_SAVE_DIR):
@@ -65,7 +65,7 @@ class StringArtEnv(gym.Env):
         self.target = self.dataset[self.index % len(self.dataset)]
         self.index += 1
         obs = self.canvas.copy()
-        obs = obs.astype(np.float32)
+        obs = obs.astype(np.float32) / 255.0
         info = {}
         return obs, info
 
@@ -83,7 +83,7 @@ class StringArtEnv(gym.Env):
         terminated = self.used_lines >= NUM_LINES
         truncated = False
         info = {}
-        obs = obs.astype(np.float32)
+        obs = obs.astype(np.float32) / 255.0
 
         return obs, reward.item(), terminated, truncated, info
 
