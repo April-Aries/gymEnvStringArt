@@ -65,6 +65,7 @@ class StringArtEnv(gym.Env):
         self.target = self.dataset[self.index % len(self.dataset)]
         self.index += 1
         obs = self.canvas.copy()
+        obs = obs.astype(np.float32)
         info = {}
         return obs, info
 
@@ -82,6 +83,7 @@ class StringArtEnv(gym.Env):
         terminated = self.used_lines >= NUM_LINES
         truncated = False
         info = {}
+        obs = obs.astype(np.float32)
 
         return obs, reward.item(), terminated, truncated, info
 
